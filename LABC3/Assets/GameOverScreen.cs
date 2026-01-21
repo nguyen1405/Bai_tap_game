@@ -2,36 +2,21 @@ using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public GameObject gameOverPanel; // Kéo Panel UI GameOver vào đây
+    public GameObject gameOverPanel;
 
     void Start()
     {
-        // Ẩn panel lúc đầu
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
-
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.OnHealthChanged += CheckGameOver;
-        }
     }
 
-    private void CheckGameOver(float normalizedHealth)
+    // Public method binding
+    public void ShowGameOver(float normalizedHealth)
     {
-        if (normalizedHealth <= 0f && gameOverPanel != null)
+        if (normalizedHealth <= 0.01f && gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
-            // Có thể pause game: Time.timeScale = 0;
-        }
-    }
-
-    void OnDestroy()
-    {
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.OnHealthChanged -= CheckGameOver;
+            // Optional: Time.timeScale = 0f; để pause game
         }
     }
 }

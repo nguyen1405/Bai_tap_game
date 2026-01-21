@@ -1,23 +1,22 @@
 using UnityEngine;
-using System; // cho Action
+using UnityEngine.Events;  // Bắt buộc import để dùng UnityEvent
 
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     private float currentHealth;
 
-    // Event mà các Observer sẽ subscribe vào
-    public event Action<float> OnHealthChanged; // truyền normalized health (0..1)
+    // UnityEvent thay vì C# event - có thể binding trong Inspector
+    public UnityEvent<float> onHealthChanged;  // Truyền normalized health (0..1)
 
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealth(); // thông báo UI lần đầu
+        UpdateHealth();  // Gọi lần đầu để UI hiện máu đầy
     }
 
     void Update()
     {
-        // Test: nhấn phím H để trừ 20 máu
         if (Input.GetKeyDown(KeyCode.H))
         {
             TakeDamage(20f);
@@ -29,20 +28,20 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth < 0) currentHealth = 0;
 
-        // Thông báo cho tất cả Observer
         float normalized = currentHealth / maxHealth;
-        OnHealthChanged?.Invoke(normalized);
+
+        // Gọi UnityEvent - các hàm binding sẽ nhận normalized
+        onHealthChanged.Invoke(normalized);
 
         if (currentHealth <= 0)
         {
             Debug.Log("GAME OVER!");
-            // Có thể thêm logic khác ở đây
         }
     }
 
-    private void UpdateHealth() // gọi lần đầu
+    private void UpdateHealth()
     {
         float normalized = currentHealth / maxHealth;
-        OnHealthChanged?.Invoke(normalized);
+        onHealthChanged.Invoke(normalized);
     }
 }
