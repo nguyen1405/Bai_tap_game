@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d97731eed5afeb5439fc388048dab0fd
+guid: 0d5a2d340a6a18c45a83dd56a480ccbb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4584080654743399359
-    second: "t\u1EA3i xu\u1ED1ng (1)_0"
+      213: 8915592984020964820
+    second: world_tileset_0
+  - first:
+      213: -1170603751906099542
+    second: world_tileset_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "t\u1EA3i xu\u1ED1ng (1)_0"
+      name: world_tileset_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 225
-        height: 219
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 55, y: 0, z: 45, w: 49}
+        y: 111
+        width: 193
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14497489ee21260c0800000000000000
-      internalID: -4584080654743399359
+      spriteID: 4d5d886059c8abb70800000000000000
+      internalID: 8915592984020964820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 129
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaeb5eaf61e21cfe0800000000000000
+      internalID: -1170603751906099542
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fe84dc776b6b8e14aaeca9800d76a75e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -159,11 +184,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      "t\u1EA3i xu\u1ED1ng (1)_0": -4584080654743399359
+      world_tileset_0: 8915592984020964820
+      world_tileset_1: -1170603751906099542
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
