@@ -1,23 +1,38 @@
 using UnityEngine;
+using System.Collections;
 
-public class EnemySpawner : MonoBehaviour
-{
+[System.Serializable]
+public class WaveInfo {
     public GameObject enemyPrefab;
-    public float spawnRate = 3f;
+    public int count;
+    public float spawnInterval;
+    public FlyPath path;
+    public float speed;
+}
 
-    public float spawnX = 4f;
+public class EnemySpawner : MonoBehaviour 
+{
+    public WaveInfo[] waves;
+    private int currentWave = 0;
 
-    void Start()
-    {
-        InvokeRepeating(nameof(SpawnEnemy), 1f, spawnRate);
+    void Start() {
+        StartCoroutine(SpawnAllWaves());
     }
 
-    void SpawnEnemy()
-    {
-        float randomX = Random.Range(-spawnX, spawnX);
+    IEnumerator SpawnAllWaves() {
+        foreach (WaveInfo wave in waves) {
+            for (int i = 0; i < wave.count; i++) {
+                SpawnEnemy(wave);
+                yield return new WaitForSeconds(wave.spawnInterval);
+            }
+            yield return new WaitForSeconds(2f);
+        }
+    }
 
-        Vector3 spawnPos = new Vector3(randomX, transform.position.y, 0);
-
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+    void SpawnEnemy(WaveInfo info) {
+        GameObject enemy = Instantiate(info.enemyPrefab, info.path[0], Quaternion.identity);
+        FlyPathAgent agent = enemy.GetComponent<FlyPathAgent>();
+        agent.path = info.path;
+        agent.speed = info.speed;
     }
 }
